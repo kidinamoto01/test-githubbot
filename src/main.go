@@ -63,30 +63,34 @@ func FetchPullRequest(ownername string,reporname string) ([]*github.PullRequest,
 }
 
 func main() {
-	var username string
-	fmt.Print("Enter GitHub username: ")
-	fmt.Scanf("%s", &username)
-
-	orgs, err := FetchOrganizations(username)
-	if err != nil {
-		fmt.Printf("Error: %v\n", err)
-		return
-	}
-
-	for i, org := range orgs {
-		fmt.Printf("%v. %v\n", i+1,org.GetLogin())
-	}
-
-	repos, err := FetchRepos(username)
-	if err != nil {
-		fmt.Printf("Error: %v\n", err)
-		return
-	}
-
-	for i, repo := range repos {
-		fmt.Printf("%v. %v\n", i+1,repo.GetFullName())
-	}
+	//var username string
+	//fmt.Print("Enter GitHub username: ")
+	//fmt.Scanf("%s", &username)
+	//
+	//orgs, err := FetchOrganizations(username)
+	//if err != nil {
+	//	fmt.Printf("Error: %v\n", err)
+	//	return
+	//}
+	//
+	//for i, org := range orgs {
+	//	fmt.Printf("%v. %v\n", i+1,org.GetLogin())
+	//}
+	//
+	//repos, err := FetchRepos(username)
+	//if err != nil {
+	//	fmt.Printf("Error: %v\n", err)
+	//	return
+	//}
+	//
+	//for i, repo := range repos {
+	//	fmt.Printf("%v. %v\n", i+1,repo.GetFullName())
+	//}
 	prs ,err:= FetchPullRequest("irisnet","irishub")
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return
+	}
 	for i, pr := range prs {
 		fmt.Printf("%v. %v\n", i+1,pr.GetTitle())
 	}
